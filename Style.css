@@ -1,58 +1,58 @@
-/* Base styling */
-body {
-  margin: 4;
-  font-family: Arial, sans-serif;
-  background-color: #cfc5c4;
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+  scroll-behavior: smooth;
 }
 
-/* Navbar */
-.navbar {
-  background: #b5aaa8;
-  padding: 10px 20px;
+.hero-section {
+  height: 100vh;
+  background-color: #444;
+  color: white;
+  position: relative;
+}
+
+.comic-box {
+  margin: 20px auto;
+  width: 300px;
+  height: 300px;
+  padding: 20px;
+  background-color: #f3f3f3;
+  border: 2px solid #888;
+  border-radius: 10px;
+  font-size: 22px;
+  line-height: 1.6;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  height: 50px; 
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#comic-controls button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
 }
 
-.navbar a {
-  text-decoration: none;
-  color: #0d0c0c;
-  margin-left: 15px;
-  font-weight: bold;
+
+.image-placeholder {
+  height: 1000px;
+  background: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  color: #666;
+  margin-top: 15%;
 }
 
-.nav-right a:hover {
-  text-decoration: underline;
-}
-
-/* Container */
-.container {
-  padding: 20px;
-  max-width: 1200px;
-  margin: auto;
-}
-
-/* Section Headings */
-h2 {
-  border-bottom: 1px solid #aaa;
-  padding-bottom: 10px;
-}
-
-/* About Section */
-#About {
-  margin-top: 20px;
-  padding: 20px;
-}
-
-#About h2 {
-  font-size: 36px;
-  font-weight: bold;
-  color: #0d0c0c;
-  margin-bottom: 40px;
-  font-family: Arial, sans-serif;
+.profile-placeholder {
+  height: 150px;
+  background: #ccc;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  color: #555;
 }
 
