@@ -1,6 +1,5 @@
 // Function to update comic page
 function updateComicPage() {
-    comicImage.src = comicPages[currentPage];
     choiceContainer.style.display = 'none';
     beginButton.style.display = 'none';
     endButton.style.display = 'none';
@@ -50,6 +49,22 @@ function updateComicPage() {
     }
 }
 
+// Debounce function to prevent too frequent updates
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Create debounced version of updateComicPage
+const debouncedUpdateComicPage = debounce(updateComicPage, 100);
+
 // Add event listeners to the Begin and End buttons
 beginButton.addEventListener('click', onBeginButtonClick);
 endButton.addEventListener('click', onEndButtonClick);
@@ -62,7 +77,7 @@ startButton.addEventListener('click', () => {
     resetAll();
     startPage.style.display = 'none';
     comicSection.style.display = 'block';
-    updateComicPage();
+    debouncedUpdateComicPage();
 });
 
 // Event listener for the End button (Returns to the start page)
@@ -76,7 +91,7 @@ endButton.addEventListener('click', () => {
 prevBtn.addEventListener('click', () => {
     if (currentPage > 0) {
         currentPage--;
-        updateComicPage();
+        debouncedUpdateComicPage();
     }
 });
 
@@ -84,7 +99,7 @@ prevBtn.addEventListener('click', () => {
 nextBtn.addEventListener('click', () => {
     if (currentPage < comicPages.length - 1) {
         currentPage++;
-        updateComicPage();
+        debouncedUpdateComicPage();
     }
 });
 
@@ -94,7 +109,7 @@ choiceAButton.addEventListener('click', () => {
     currentPage = 3;
     choiceAButton.style.display = 'none';
     choiceBButton.style.display = 'none';
-    updateComicPage();
+    debouncedUpdateComicPage();
 });
 
 choiceBButton.addEventListener('click', () => {
@@ -102,8 +117,8 @@ choiceBButton.addEventListener('click', () => {
     currentPage = 6;
     choiceAButton.style.display = 'none';
     choiceBButton.style.display = 'none';
-    updateComicPage();
+    debouncedUpdateComicPage();
 });
 
 // Initialize the comic display on load
-updateComicPage();
+debouncedUpdateComicPage();
